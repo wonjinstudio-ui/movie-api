@@ -7,7 +7,7 @@ import authRouter from "./routes/auth.js";
 const app = express();
 const port = Number(process.env.PORT || 4000);
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: process.env.CLIENT_ORIGIN }));
 app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/movies", moviesRouter);
@@ -22,7 +22,6 @@ app.use((req, res) => {
 
 async function startServer() {
   if (redisConfigured) {
-    // Redis 접속 정보가 있으면 연결 시도
     try {
       await redis.connect();
       console.log("Redis 연결 완료");
@@ -30,7 +29,6 @@ async function startServer() {
       console.error("Redis 연결 실패:", error.message);
     }
   } else {
-    // 접속 정보가 없으면 Redis 연결 생략
     console.log("Redis 미설정: DB 조회로 진행합니다.");
   }
 
