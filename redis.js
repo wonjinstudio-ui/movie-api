@@ -1,7 +1,6 @@
 import { createClient } from "redis";
 
 const port = Number(process.env.REDIS_PORT);
-
 export const redisConfigured = Boolean(
   process.env.REDIS_HOST && Number.isInteger(port) && port > 0 && port < 65536,
 );

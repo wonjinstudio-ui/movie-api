@@ -1,5 +1,5 @@
 {
-  "name": "day62-movie-api",
+  "name": "day64-movie-api",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -11,6 +11,7 @@
     "@supabase/supabase-js": "2.118.0",
     "cors": "^2.8.6",
     "express": "^5.3.0",
+    "multer": "^2.5.0",
     "redis": "^5.0.0"
   },
   "engines": {

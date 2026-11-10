@@ -4,16 +4,18 @@ import { redis, redisConfigured } from "./redis.js";
 import moviesRouter from "./routes/movies.js";
 import authRouter from "./routes/auth.js";
 
+import postersRouter from "./routes/posters.js";
+
 const app = express();
 const port = Number(process.env.PORT || 4000);
-
 app.use(cors({ origin: process.env.CLIENT_ORIGIN }));
 app.use(express.json());
 app.use("/api/auth", authRouter);
+app.use("/api/movies", postersRouter);
 app.use("/api/movies", moviesRouter);
 
 app.get("/", (req, res) => {
-  res.json({ message: "1234" });
+  res.json({ message: "영화 API 서버입니다." });
 });
 
 app.use((req, res) => {
